@@ -1,7 +1,5 @@
 # T2: Autonomous Navigation and Object Identification Using ROS 2.
 
-## Objectives 
-
 This project focuses on developing an autonomous robotic system capable of:
 
 - Implement **autonomous navigation** in a partially known environment.
@@ -15,6 +13,9 @@ This project focuses on developing an autonomous robotic system capable of:
 - **Simulation:** Gazebo
 - **Robot Model:** TurtleBot3 - Burger with LiDAR and odometry sensors
 
-## Repository Structure
+## Cloning Repository
 
-📂 project-root ├── src/ # Source code for navigation and perception │ ├── navigation.py # Autonomous navigation logic │ ├── perception.py # Object detection and classification │ ├── logging.py # Data recording module ├── worlds/ # Custom simulation environments ├── data/ # Output logs and detected objects ├── README.md # Documentation ├── requirements.txt # Required dependencies
+```bash 
+git clone https://github.com/gabriel1995castro/autonomous_robots.git
+cd autonomous_robots
+```
