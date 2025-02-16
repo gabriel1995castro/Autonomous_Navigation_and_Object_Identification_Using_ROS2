@@ -1,10 +1,20 @@
-# T2 - Robôs autônomos
+# T2: Autonomous Navigation and Object Identification Using ROS 2.
 
-Este trabalho consiste em utilizar um robô móvel com um conjunto de sensores em um ambiente parcialmente conhecido para 
-1. identificar obstáculos no ambiente;
-2.  posicionar e classificar os obstáculos;
-3.  informar o total de obstáculos de cada classe no ambiente.
+## Objectives 
 
-## Algoritmo básico 
+This project focuses on developing an autonomous robotic system capable of:
 
-## Ferramentas 
+- Implement **autonomous navigation** in a partially known environment.
+- Detect and classify **two types of obstacles**: **spheres and boxes**.
+- Record **position, dimensions, and total count** of detected obstacles.
+- Ensure full environment coverage and generate a **detailed report** of detected objects.
+  
+## Tools & Technologies
+
+- **Programming Language:** Python (ROS 2)
+- **Simulation:** Gazebo
+- **Robot Model:** TurtleBot3 - Burger with LiDAR and odometry sensors
+
+## Repository Structure
+
+📂 project-root ├── src/ # Source code for navigation and perception │ ├── navigation.py # Autonomous navigation logic │ ├── perception.py # Object detection and classification │ ├── logging.py # Data recording module ├── worlds/ # Custom simulation environments ├── data/ # Output logs and detected objects ├── README.md # Documentation ├── requirements.txt # Required dependencies
