@@ -46,7 +46,7 @@ The `object_detector_node.py` node is responsible for detecting objects based on
 
 ### LiDAR Data Acquisition and Processing
 
-LiDAR emits laser beams and returns the distance to objects around the robot. object_detector_node.py collects these measurements and converts the data to Cartesian coordinates relative to the robot's current position.
+LiDAR emits laser beams and returns the distance to objects around the robot and `object_detector_node.py` collects these measurements and converts the data to Cartesian coordinates relative to the robot's current position.
 
 ### Data Conversion
 
@@ -62,8 +62,8 @@ $$
 
 where:
 
-- \( d \) is the distance measured by LiDAR.
-- \( \theta \) is the corresponding angle.
+- $d$ is the distance measured by LiDAR.
+- $\theta$ is the corresponding angle.
     
 The resulting points are stored in a list for later processing.
 
