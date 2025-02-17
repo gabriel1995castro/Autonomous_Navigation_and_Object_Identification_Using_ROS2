@@ -102,10 +102,6 @@ If the robot goes more than 20 seconds without identifying a new explored area, 
 
 The system has a stopping mechanism based on a topic (/stop_flag). When a stop signal (Bool = True) is received, the robot stops its movement and ends exploration. This command occurs when the robot finds no new areas to explore after 20 seconds or if the obstacle count remains constant for 1 minute.
 
-## Results
-
-dsds
-
 ## Testing
 
 To simplify the testing process, the robot used will be introduced into the world in question automatically from the launch file. The TurtleBot3 Burger robot is loaded into the Gazebo environment in a random position at each simulation run. The position and orientation of the robot are dynamically generated at launch, using random values ​​for the x, y coordinates and yaw angle.
