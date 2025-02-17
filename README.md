@@ -48,7 +48,7 @@ The `object_detector_node.py` node is responsible for detecting objects based on
 
 LiDAR emits laser beams and returns the distance to objects around the robot and `object_detector_node.py` collects these measurements and converts the data to Cartesian coordinates relative to the robot's current position.
 
-### Data Conversion
+#### Data Conversion
 
 Each LiDAR reading contains a set of distances associated with specific angles. These readings are converted to 2D coordinates using:
 
