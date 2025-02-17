@@ -22,7 +22,7 @@ This project focuses on developing an autonomous robotic system capable of:
 
 ## Navigation and Obstacle Detection
 
-The `robot_nav6.py` module uses LiDAR sensors to detect obstacles and adjust the robot's trajectory. It works as follows:
+The `robot_nav6.py` node uses LiDAR sensors to detect obstacles and adjust the robot's trajectory. It works as follows:
 
 1. LiDAR takes readings of the area around the robot, capturing distances to objects.
 
@@ -42,7 +42,7 @@ The `robot_nav6.py` module uses LiDAR sensors to detect obstacles and adjust the
 
 9. The system also maps visited areas, dividing the environment into square zones and recording the explored coordinates.
 
-The `object_detector_node.py` program is responsible for detecting objects based on data provided by the LiDAR sensor and the robot's odometry. It processes environmental data, identifies groupings of points and classifies objects.
+The `object_detector_node.py` node is responsible for detecting objects based on data provided by the LiDAR sensor and the robot's odometry. It processes environmental data, identifies groupings of points and classifies objects.
 
 #### LiDAR Data Acquisition and Processing
 
