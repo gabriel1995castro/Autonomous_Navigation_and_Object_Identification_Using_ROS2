@@ -71,7 +71,7 @@ The resulting points are stored in a list for later processing.
 
 The node uses the DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm to group the detected points. This method allows you to identify dense regions of points, assuming that they belong to the same object.
  
-- DBSCAN steps:
+**DBSCAN steps:**
 
 1. Defines a search radius and a minimum number of points to form a group.
 2. Groups nearby points that meet these criteria.
@@ -83,14 +83,13 @@ The result is a set of clusters representing distinct objects.
   
 After identifying groupings, the node analyzes their geometric shapes to classify the objects:
 
-Adjustment by RANSAC (Random Sample Consensus):
+**Adjustment by RANSAC (Random Sample Consensus):**
+1. The algorithm tries to fit the cluster points to a geometric model.
+2. If the points can be fit to a circle within a margin of error, the object is classified as a "Sphere".
+Otherwise, the object is classified as "Box".
 
-        The algorithm tries to fit the cluster points to a geometric model.
-        If the points can be fit to a circle within a margin of error, the object is classified as a "Sphere".
-        Otherwise, the object is classified as "Box".
-
-Distance Filter:
-        Only objects within the range of 0.2m to 1.8m are considered valid for registration.
+**Distance Filter:**
+Only objects within the range of 0.2m to 1.8m are considered valid for registration.
 
 
 ### Environment Mapping
@@ -110,15 +109,16 @@ To simplify the testing process, the robot used will be introduced into the worl
 
 How positioning is done:
 
-    **Position (x, y)**:
-        The robot's coordinates at the base of the simulation environment are randomly generated within a defined range:
-            x: Random value between -1.0 and 1.0 meters.
-            y: Random value between -1.0 and 1.0 meters.
+**Position (x, y)**:
+    The robot's coordinates at the base of the simulation environment are randomly generated within a defined range:
+    
+        x: Random value between -1.0 and 1.0 meters.
+        y: Random value between -1.0 and 1.0 meters.
 
     This approach ensures that the robot is positioned in different locations for each execution, increasing the variability and realism of the simulation.
 
-    **Guidance (yaw)**:
-        The robot's orientation angle is also randomly generated in the range -π to +π radians. This value represents the rotation of the robot around the vertical axis, and the randomness in this value ensures that the robot can start the simulation with different orientations, creating more dynamic scenarios.
+**Guidance (yaw)**:
+    The robot's orientation angle is also randomly generated in the range -π to +π radians. This value represents the rotation of the robot around the vertical axis, and the randomness in this value ensures that the robot can start the simulation with different orientations, creating more dynamic scenarios.
 
 ### Cloning repository 
 
