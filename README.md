@@ -44,42 +44,42 @@ The `robot_nav6.py` node uses LiDAR sensors to detect obstacles and adjust the r
 
 The `object_detector_node.py` node is responsible for detecting objects based on data provided by the LiDAR sensor and the robot's odometry. It processes environmental data, identifies groupings of points and classifies objects.
 
-#### LiDAR Data Acquisition and Processing
+### LiDAR Data Acquisition and Processing
 
 LiDAR emits laser beams and returns the distance to objects around the robot. object_detector_node.py collects these measurements and converts the data to Cartesian coordinates relative to the robot's current position.
-Data Conversion
+
+### Data Conversion
 
 Each LiDAR reading contains a set of distances associated with specific angles. These readings are converted to 2D coordinates using:
 
-```bash 
-x=d×cos⁡(θ)
-x=d×cos(θ)
-y=d×sin⁡(θ)
-y=d×sin(θ)
-```
+$$
+x = d \cdot \cos(\theta)
+$$
+
+$$
+y = d \cdot \sin(\theta)
+$$
 
 where:
 
-``` 
-    d is the distance measured by LiDAR.
-    θ is the corresponding angle.
-```
+- \( d \) is the distance measured by LiDAR.
+- \( \theta \) is the corresponding angle.
+    
 The resulting points are stored in a list for later processing.
 
--Object Segmentation and Identification
+### Object Segmentation and Identification
 
 The node uses the DBSCAN (Density-Based Spatial Clustering of Applications with Noise) algorithm to group the detected points. This method allows you to identify dense regions of points, assuming that they belong to the same object.
  
-DBSCAN steps:
+- DBSCAN steps:
 
-```
-        Defines a search radius and a minimum number of points to form a group.
-        Groups nearby points that meet these criteria.
-        Ignores isolated points as noise.
-```
+1. Defines a search radius and a minimum number of points to form a group.
+2. Groups nearby points that meet these criteria.
+3. Ignores isolated points as noise.
+
 The result is a set of clusters representing distinct objects.
 
-#### Classification of Objects
+### Classification of Objects
   
 After identifying groupings, the node analyzes their geometric shapes to classify the objects:
 
@@ -93,13 +93,13 @@ Distance Filter:
         Only objects within the range of 0.2m to 1.8m are considered valid for registration.
 
 
-#### Environment Mapping
+### Environment Mapping
 
 The system uses odometry information to divide the environment into zones of predefined size (zone_size = 4). Each zone is registered as the robot moves, allowing you to monitor the area already covered.
 
 If the robot goes more than 20 seconds without identifying a new explored area, it signals the end of exploration and stops its navigation.
 
-#### Exploration Stop
+### Exploration Stop
 
 The system has a stopping mechanism based on a topic (/stop_flag). When a stop signal (Bool = True) is received, the robot stops its movement and ends exploration. This command occurs when the robot finds no new areas to explore after 20 seconds or if the obstacle count remains constant for 1 minute.
 
