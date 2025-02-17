@@ -1,9 +1,0 @@
-
-        🔹 **Relatório de Execução**
-        ---------------------------------
-         Tempo total de execução: 2.16 segundos
-         Objetos detectados: 0
-         Última atualização de detecção: 2.18 segundos atrás
-         Localização final do robô: Desconhecida
-        ---------------------------------
-        
