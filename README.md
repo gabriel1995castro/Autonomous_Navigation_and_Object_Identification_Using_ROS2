@@ -32,7 +32,7 @@ git clone https://github.com/gabriel1995castro/autonomous_robots.git
 cd autonomous_robots
 ```
 
-## Building package
+## Building the package
 
 ```bash 
 colcon build --packages-select robot_controller
