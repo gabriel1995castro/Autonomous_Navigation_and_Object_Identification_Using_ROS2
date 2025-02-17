@@ -115,8 +115,8 @@ How positioning is done:
 **Position (x, y)**:
 The robot's coordinates at the base of the simulation environment are randomly generated within a defined range:
     
-        x: Random value between -1.0 and 1.0 meters.
-        y: Random value between -1.0 and 1.0 meters.
+  x: Random value between -1.0 and 1.0 meters.
+  y: Random value between -1.0 and 1.0 meters.
 
 This approach ensures that the robot is positioned in different locations for each execution, increasing the variability and realism of the simulation.
 
