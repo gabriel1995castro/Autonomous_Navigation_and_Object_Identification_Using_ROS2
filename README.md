@@ -29,14 +29,14 @@ git clone https://github.com/gabriel1995castro/autonomous_robots.git
 cd autonomous_robots
 ```
 
-## Building the package
+### Building the package
 
 ```bash 
 colcon build --packages-select robot_controller
 source install/setup.bash
 ```
 
-## Running the Simulation
+### Running the Simulation
 
 ```bash 
 ros2 launch robot_controller launch.py
