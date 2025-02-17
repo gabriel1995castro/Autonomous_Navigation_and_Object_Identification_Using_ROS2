@@ -13,9 +13,34 @@ This project focuses on developing an autonomous robotic system capable of:
 - **Simulation:** Gazebo
 - **Robot Model:** TurtleBot3 - Burger with LiDAR and odometry sensors
 
-## Cloning Repository
+## System Requirements
+
+Operating System: Ubuntu 22.04 LTS
+
+ROS Version: ROS 2 Humble Hawksbill
+
+Gazebo Version: Gazebo 11.10.2
+
+Python Version: Python 3.10.12
+
+## Setup
+
+### Cloning repository 
 
 ```bash 
 git clone https://github.com/gabriel1995castro/autonomous_robots.git
 cd autonomous_robots
+```
+
+## Building package
+
+```bash 
+colcon build --packages-select robot_controller
+source install/setup.bash
+```
+
+## Running the Simulation
+
+```bash 
+ros2 launch robot_controller launch.py
 ```
