@@ -7,7 +7,7 @@ This project focuses on developing an autonomous robotic system capable of:
 - Record **position, dimensions, and total count** of detected obstacles.
 - Ensure full environment coverage and generate a **detailed report** of detected objects.
   
-## Tools & Technologies
+## Tools
 
 - **Programming Language:** Python (ROS 2)
 - **Simulation:** Gazebo
@@ -20,47 +20,31 @@ This project focuses on developing an autonomous robotic system capable of:
 - Gazebo 11.10.2
 - Python 3.10.12
 
-## Setup
+## Navigation and Obstacle Detection
 
-### Cloning repository 
+The `robot_nav6.py` module uses LiDAR sensors to detect obstacles and adjust the robot's trajectory. It works as follows:
 
-```bash 
-git clone https://github.com/gabriel1995castro/autonomous_robots.git
-cd autonomous_robots
-```
+1. LiDAR takes readings of the area around the robot, capturing distances to objects.
 
-### Building the package
+2. If an obstacle is detected at a distance smaller than the safe limit (safe_distance = 0.5m), the robot changes its direction to avoid collisions.
 
-```bash 
-colcon build --packages-select robot_controller
-source install/setup.bash
-```
+3. The system also maps visited areas, dividing the environment into square zones and recording the explored coordinates.
 
-### Navigation and Obstacle Detection
+4. LiDAR takes readings of the area around the robot, capturing distances to objects in a 360-degree field of view.
 
-The robot_nav6.py module uses LiDAR sensors to detect obstacles and adjust the robot's trajectory. It works as follows:
+5. To detect obstacles ahead, the system considers a central cone of 45 degrees, analyzing only the points within this region.
 
-LiDAR takes readings of the area around the robot, capturing distances to objects.
+6. If an obstacle is detected at a distance smaller than the safety limit (safe_distance = 0.5m), the robot stops moving forward and rotates until it finds a safe direction.
 
-If an obstacle is detected at a distance smaller than the safe limit (safe_distance = 0.5m), the robot changes its direction to avoid collisions.
+7. If no obstacles are detected within the monitored zone, the robot continues to advance in a straight line.
 
-The system also maps visited areas, dividing the environment into square zones and recording the explored coordinates.
+8. Furthermore, the robot changes direction randomly after a variable time interval (between 7 and 20 seconds), ensuring an efficient exploration pattern and avoiding getting stuck in narrow areas.
 
-1 - LiDAR takes readings of the area around the robot, capturing distances to objects in a 360-degree field of view.
+9. The system also maps visited areas, dividing the environment into square zones and recording the explored coordinates.
 
-2- To detect obstacles ahead, the system considers a central cone of 45 degrees, analyzing only the points within this region.
+The `object_detector_node.py` program is responsible for detecting objects based on data provided by the LiDAR sensor and the robot's odometry. It processes environmental data, identifies groupings of points and classifies objects.
 
-3 - If an obstacle is detected at a distance smaller than the safety limit (safe_distance = 0.5m), the robot stops moving forward and rotates until it finds a safe direction.
-
-4- If no obstacles are detected within the monitored zone, the robot continues to advance in a straight line.
-
-5- Furthermore, the robot changes direction randomly after a variable time interval (between 7 and 20 seconds), ensuring an efficient exploration pattern and avoiding getting stuck in narrow areas.
-
-6- The system also maps visited areas, dividing the environment into square zones and recording the explored coordinates.
-
-The object_detector_node.py program is responsible for detecting objects based on data provided by the LiDAR sensor and the robot's odometry. It processes environmental data, identifies groupings of points and classifies objects.
-
-- LiDAR Data Acquisition and Processing
+#### LiDAR Data Acquisition and Processing
 
 LiDAR emits laser beams and returns the distance to objects around the robot. object_detector_node.py collects these measurements and converts the data to Cartesian coordinates relative to the robot's current position.
 Data Conversion
@@ -76,7 +60,7 @@ y=d×sin(θ)
 
 where:
 
-```bash 
+``` 
     d is the distance measured by LiDAR.
     θ is the corresponding angle.
 ```
@@ -88,15 +72,15 @@ The node uses the DBSCAN (Density-Based Spatial Clustering of Applications with 
  
 DBSCAN steps:
 
-```bash 
+```
         Defines a search radius and a minimum number of points to form a group.
         Groups nearby points that meet these criteria.
         Ignores isolated points as noise.
 ```
 The result is a set of clusters representing distinct objects.
 
-- Classification of Objects
-- 
+#### Classification of Objects
+  
 After identifying groupings, the node analyzes their geometric shapes to classify the objects:
 
 Adjustment by RANSAC (Random Sample Consensus):
@@ -109,17 +93,18 @@ Distance Filter:
         Only objects within the range of 0.2m to 1.8m are considered valid for registration.
 
 
-### 2. Environment Mapping
+#### Environment Mapping
 
 The system uses odometry information to divide the environment into zones of predefined size (zone_size = 4). Each zone is registered as the robot moves, allowing you to monitor the area already covered.
 
 If the robot goes more than 20 seconds without identifying a new explored area, it signals the end of exploration and stops its navigation.
 
-### 3. Exploration Stop
+#### Exploration Stop
 
 The system has a stopping mechanism based on a topic (/stop_flag). When a stop signal (Bool = True) is received, the robot stops its movement and ends exploration. This command occurs when the robot finds no new areas to explore after 20 seconds or if the obstacle count remains constant for 1 minute.
 
-### 4. Test the created worlds
+
+## Testing
 
 To simplify the testing process, the robot used will be introduced into the world in question automatically from the launch file. The TurtleBot3 Burger robot is loaded into the Gazebo environment in a random position at each simulation run. The position and orientation of the robot are dynamically generated at launch, using random values ​​for the x, y coordinates and yaw angle.
 
@@ -135,7 +120,19 @@ How positioning is done:
     Guidance (yaw):
         The robot's orientation angle is also randomly generated in the range -π to +π radians. This value represents the rotation of the robot around the vertical axis, and the randomness in this value ensures that the robot can start the simulation with different orientations, creating more dynamic scenarios.
 
-### 5. Execution with Release File
+### Cloning repository 
+
+```bash 
+git clone https://github.com/gabriel1995castro/autonomous_robots.git
+cd autonomous_robots
+```
+
+### Building the package
+
+```bash 
+colcon build --packages-select robot_controller
+source install/setup.bash
+```
 
 To start the navigation and obstacle detection system, both programs must be called via a launch file. This file ensures that the two modules run together and are correctly synchronized.
 
