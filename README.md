@@ -102,6 +102,9 @@ If the robot goes more than 20 seconds without identifying a new explored area, 
 
 The system has a stopping mechanism based on a topic (/stop_flag). When a stop signal (Bool = True) is received, the robot stops its movement and ends exploration. This command occurs when the robot finds no new areas to explore after 20 seconds or if the obstacle count remains constant for 1 minute.
 
+## Results
+
+dsds
 
 ## Testing
 
@@ -110,15 +113,15 @@ To simplify the testing process, the robot used will be introduced into the worl
 How positioning is done:
 
 **Position (x, y)**:
-    The robot's coordinates at the base of the simulation environment are randomly generated within a defined range:
+The robot's coordinates at the base of the simulation environment are randomly generated within a defined range:
     
         x: Random value between -1.0 and 1.0 meters.
         y: Random value between -1.0 and 1.0 meters.
 
-    This approach ensures that the robot is positioned in different locations for each execution, increasing the variability and realism of the simulation.
+This approach ensures that the robot is positioned in different locations for each execution, increasing the variability and realism of the simulation.
 
 **Guidance (yaw)**:
-    The robot's orientation angle is also randomly generated in the range -π to +π radians. This value represents the rotation of the robot around the vertical axis, and the randomness in this value ensures that the robot can start the simulation with different orientations, creating more dynamic scenarios.
+The robot's orientation angle is also randomly generated in the range -π to +π radians. This value represents the rotation of the robot around the vertical axis, and the randomness in this value ensures that the robot can start the simulation with different orientations, creating more dynamic scenarios.
 
 ### Cloning repository 
 
