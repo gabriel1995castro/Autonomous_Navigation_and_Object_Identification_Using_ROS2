@@ -15,13 +15,10 @@ This project focuses on developing an autonomous robotic system capable of:
 
 ## System Requirements
 
-Operating System: Ubuntu 22.04 LTS
-
-ROS Version: ROS 2 Humble Hawksbill
-
-Gazebo Version: Gazebo 11.10.2
-
-Python Version: Python 3.10.12
+- Ubuntu 22.04 LTS
+- ROS 2 Humble Hawksbill
+- Gazebo 11.10.2
+- Python 3.10.12
 
 ## Setup
 
