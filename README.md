@@ -108,7 +108,7 @@ If the robot goes more than 20 seconds without identifying a new explored area, 
 
 | World 1 | World 2 |
 |---------|---------|
-| ![](https://github.com/user-attachments/assets/3bb4e24e-84b1-448b-9bc8-9e762ef763ed) | ![](https://github.com/user-attachments/assets/84813448-cae5-4a05-9c9c-08dcb1e77d78) |
+|![](https://github.com/user-attachments/assets/84813448-cae5-4a05-9c9c-08dcb1e77d78) | ![](https://github.com/user-attachments/assets/3bb4e24e-84b1-448b-9bc8-9e762ef763ed)|
 
 ### Exploration Stop
 
