@@ -96,6 +96,8 @@ Only objects within the range of 0.2m to 1.8m are considered valid for registrat
 
 The system uses odometry information to divide the environment into zones of predefined size (zone_size = 4). Each zone is registered as the robot moves, allowing you to monitor the area already covered.
 
+![Screenshot from 2025-02-17 22-43-53](https://github.com/user-attachments/assets/7f39e7bc-c4ba-49e4-b65d-eac7bcda3220)
+
 If the robot goes more than 20 seconds without identifying a new explored area, it signals the end of exploration and stops its navigation.
 
 ### Exploration Stop
