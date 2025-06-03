@@ -1,4 +1,4 @@
-# T2: Autonomous Navigation and Object Identification Using ROS 2.
+# Autonomous Navigation and Object Identification Using ROS 2.
 
 This project focuses on developing an autonomous robotic system capable of:
 
